@@ -1,0 +1,9 @@
+procedure Minifit (m, n, p, eps, tol) trans: (ab) result: (q);
+   value m, n, p, eps, tol;
+   integer m, n, p;
+   real eps, tol;
+   array ab, q;
+code;
+
+begin
+end
