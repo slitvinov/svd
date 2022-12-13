@@ -5,5 +5,33 @@ procedure Minifit (m, n, p, eps, tol) trans: (ab) result: (q);
    array ab, q;
 code;
 
+procedure printreal(x);
+value x; real x;
+code;
+
 begin
+   integer n, m, p;
+   ininteger(0, m);
+   ininteger(0, n);
+   ininteger(0, p);
+   begin
+	 integer i, j;
+	 real eps, tol;
+	 real array ab[1:m, 1:n+p];
+	 real array q[1:n];
+	 eps := 1.5/10^(8);
+	 tol := 1/10^(30);
+	 for i:= 1 step 1 until m do
+	 for j:= 1 step 1 until n do
+	    inreal(0, ab[i,j]);
+	 for i:= 1 step 1 until m do
+	 for j:= 1 step 1 until p do
+	    inreal(0, ab[i, n + j]);
+	 Minifit(m, n, p, eps, tol, ab, q);
+	 for i:= 1 step 1 until n do
+	 begin
+	    printreal(q[i]);
+	    outstring(1, "\n")
+	 end
+   end
 end
