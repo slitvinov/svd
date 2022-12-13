@@ -31,7 +31,7 @@ Builds libsvd.a in [lib](lib/) and driver codes in
     5.143005806586437e-01
     9.525518091565106e+00
 
-- [GolubReinsch] Golub, G. H., & Reinsch, C. (1971). Singular value
-  decomposition and least squares solutions. In Linear Algebra
-  (pp. 134-151). Springer, Berlin, Heidelberg.
+- [GolubReinsch] Golub, G.H., Reinsch, C. Singular value decomposition
+  and least squares solutions. Numer. Math. 14, 403–420
+  (1970). https://doi.org/10.1007/BF02163027
 - [marst] https://www.gnu.org/software/marst
