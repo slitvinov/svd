@@ -9,29 +9,55 @@ procedure printreal(x);
 value x; real x;
 code;
 
+integer procedure max(a, b);
+value a, b; integer a, b;
+begin
+max := if a > b then a else b
+end;
+
 begin
    integer n, m, p;
    ininteger(0, m);
    ininteger(0, n);
    ininteger(0, p);
    begin
-	 integer i, j;
-	 real eps, tol;
-	 real array ab[1:m, 1:n+p];
-	 real array q[1:n];
-	 eps := 1.5/10^(8);
-	 tol := 1/10^(30);
-	 for i:= 1 step 1 until m do
-	 for j:= 1 step 1 until n do
-	    inreal(0, ab[i,j]);
-	 for i:= 1 step 1 until m do
-	 for j:= 1 step 1 until p do
-	    inreal(0, ab[i, n + j]);
-	 Minifit(m, n, p, eps, tol, ab, q);
-	 for i:= 1 step 1 until n do
-	 begin
-	    printreal(q[i]);
-	    outstring(1, "\n")
-	 end
+      integer i,j;
+      Boolean withu, withv;
+      real eps, tol;
+      real array q[1:max(n,m)], ab[1:m,1:n+p];
+      eps := 1.5/10^(8);
+      tol := 1/10^(30);
+      withu:= withv:= true;
+      for i:= 1 step 1 until m do
+      for j:= 1 step 1 until n do
+         inreal(0, ab[i,j]);
+      for i:= 1 step 1 until m do
+      for j:= 1 step 1 until p do
+         inreal(0, ab[i,n+j]);
+      Minifit(m,n,p,eps,tol,ab,q);
+      for i:= 1 step 1 until n do
+      begin
+         printreal(q[i]);
+         outstring(1, "\n")
+      end;
+      for i:= 1 step 1 until m do
+      begin
+         for j:= 1 step 1 until n do
+         begin
+            printreal(ab[i,j]);
+            outstring(1, " ")
+         end;
+         outstring(1, "\n")
+      end;
+      outstring(1, "\n");
+      for i:= 1 step 1 until max(n,m) do
+      begin
+         for j:= 1 step 1 until p do
+         begin
+            printreal(ab[i,n+j]);
+            outstring(1, " ")
+         end;
+         outstring(1, "\n")
+      end
    end
 end
